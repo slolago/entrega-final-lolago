@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block contenido %}
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Productos</h1>
+            <p class="lead">Lista de productos</p>
+        </div>
+    </header>
+    <section id="about">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <table class = "table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for n in producto %}
+                                <tr>
+                                    <th scope="row">{{n.id}}</th>
+                                    <td>{{n.nombre}}</td>
+                                    <td>{{n.cantidad}}</td>
+                                    <td><a class="btn btn-outline-danger btn-sm"  href="{% url 'eliminar_producto' n.id %}">Eliminar Producto</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a class="btn btn-primary" href="{% url 'productos' %}">Agregar Producto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

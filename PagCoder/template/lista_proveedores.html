@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block contenido %}
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Proveedores</h1>
+            <p class="lead">Lista de proveedores</p>
+        </div>
+    </header>
+    <section id="about">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <table class = "table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Empresa</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for n in proveedor %}
+                                <tr>
+                                    <th scope="row">{{n.id}}</th>
+                                    <td>{{n.nombre}}</td>
+                                    <td>{{n.empresa}}</td>
+                                    <td>{{n.email}}</td>
+                                    <td><a class="btn btn-outline-danger btn-sm"  href="{% url 'eliminar_proveedor' n.id %}">Eliminar Proveedor</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <a class="btn btn-primary" href="{% url 'proveedores' %}">Agregar Proveedor</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
