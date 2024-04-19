@@ -30,6 +30,7 @@
                                     <td>{{n.empresa}}</td>
                                     <td>{{n.email}}</td>
                                     <td><a class="btn btn-outline-danger btn-sm"  href="{% url 'eliminar_proveedor' n.id %}">Eliminar Proveedor</a></td>
+                                    <td><a class="btn btn-outline-warning btn-sm"  href="{% url 'editar_proveedor' n.id %}">Editar Proveedor</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

@@ -27,7 +27,10 @@
                                     <th scope="row">{{n.id}}</th>
                                     <td>{{n.nombre}}</td>
                                     <td>{{n.cantidad}}</td>
+                                    {% if request.user.is_authenticated %}
                                     <td><a class="btn btn-outline-danger btn-sm"  href="{% url 'eliminar_producto' n.id %}">Eliminar Producto</a></td>
+                                    <td><a class="btn btn-outline-warning btn-sm"  href="{% url 'editar_producto' n.id %}">Editar Producto</a></td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         </tbody>

@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block contenido %}
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Proveedores</h1>
+            <p class="lead">Edite el proveedor</p>
+        </div>
+    </header>
+    <section id="about">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <form action="{% url 'editar_proveedor' proveedores.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" name="nombre" id="exampleInputEmail1" {{mi_formulario.nombre}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Empresa</label>
+                            <input type="text" class="form-control" name="empresa" id="exampleInputEmail1" {{mi_formulario.empresa}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="text" class="form-control" name="email" id="exampleInputEmail1" {{mi_formulario.email}}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <a class="btn btn-primary" href="{% url 'lista_proveedores' %}">Ver lista de Proveedores</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

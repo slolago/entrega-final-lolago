@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Tercera Pre-Entrega Lolago</title>
+        <title>Entrega Final Lolago</title>
         <link rel="icon" type="image/x-icon" href="{% static 'PagCoder/assets/favicon.ico' %}" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'PagCoder/css/styles.css' %}" rel="stylesheet" />
@@ -18,9 +18,22 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">HOME</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'productos' %}">PRODUCTOS</a></li>
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'usuarios' %}">USUARIOS</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'proveedores' %}">PROVEEDORES</a></li>
+                        {% endif %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'buscar_producto' %}">BUSCAR</a></li>
+                        {% if not request.user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login_request' %}">LOG IN</a></li>
+                        {% endif %}
+                        {% if request.user.is_authenticated %}
+                        <img src="{{ url }}" alt="" width="30px" height="30px" style="border-radius:50%; margin-top:1%">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'EditarPerfil' %}">Bienvenido, {{user.username}}</a></li>
+                        <form class="nav-link" action="{% url 'logout' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                        </form>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -38,12 +51,8 @@
                 <div class="container px-4">
                     <div class="row gx-4 justify-content-center">
                         <div class="col-lg-8">
-                            <h2>Tercera Pre-Entrega Lolago</h2>
+                            <h2>Entrega Final Lolago</h2>
                             <ul>
-                                <li>3 modelos creados</li>
-                                <li>Ingreso a 3 bases de datos</li>
-                                <li>Listado de las bases de datos</li>
-                                <li>Busqueda de la base de datos de Productos</li>
                                 <li>Basado en un template de Bootstrap</li>
                                 <li>Subido a GitHub</li>
                                 <li>Usuario para Django Admin: tutor / Coder123</li>
@@ -54,7 +63,9 @@
             </section>
         {% endblock %}
         <!-- FIN CONTENIDO -->
-
+        
+            
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark fixed-bottom">
             <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Lolago 2024</p></div>

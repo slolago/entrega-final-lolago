@@ -28,6 +28,7 @@
                                     <td>{{n.nombre}}</td>
                                     <td>{{n.email}}</td>
                                     <td><a class="btn btn-outline-danger btn-sm"  href="{% url 'eliminar_usuario' n.id %}">Eliminar Usuario</a></td>
+                                    <td><a class="btn btn-outline-warning btn-sm"  href="{% url 'editar_usuario' n.id %}">Editar Usuario</a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

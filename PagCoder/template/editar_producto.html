@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block contenido %}
+    <header class="bg-primary bg-gradient text-white">
+        <div class="container px-4 text-center">
+            <h1 class="fw-bolder">Productos</h1>
+            <p class="lead">Edite el producto</p>
+        </div>
+    </header>
+    <section id="about">
+        <div class="container px-4">
+            <div class="row gx-4 justify-content-center">
+                <div class="col-lg-8">
+                    <form action="{% url 'editar_producto' productos.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Nombre del Producto</label>
+                            <input type="text" class="form-control" name="nombre" id="exampleInputEmail1" {{mi_formulario.nombre}}
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Cantidad</label>
+                            <input type="number" class="form-control" name="cantidad" id="exampleInputPassword1" {{mi_formulario.cantidad}}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                        <a class="btn btn-primary" href="{% url 'lista_productos' %}">Ver lista de Productos</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
